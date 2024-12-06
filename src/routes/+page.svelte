@@ -21,8 +21,6 @@ onMount(() => {
   };
 
   const options = {
-    root: document.querySelector("#scrollArea"),
-    rootMargin: "0%",
     threshold: 0.5,
   };
 
@@ -35,8 +33,14 @@ onMount(() => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("animate");
+        if (entry.target.querySelector("img")) {
+          entry.target.parentElement.querySelector(".bg-card").classList.add("unfixed")
+
+        }
       } else {
-        if (!entry.target.querySelector("img")) entry.target.classList.remove("animate");
+        if (!entry.target.querySelector("img")) {
+          entry.target.classList.remove("animate");
+        } 
       }
     });
   }, {
@@ -46,6 +50,7 @@ onMount(() => {
   entranceUsers.forEach((user) => {
     entranceManager.observe(user);
   });
+
 
   // end onMount
 });
@@ -91,16 +96,16 @@ onMount(() => {
   <!-- Product 2 -->
   <div class="lifestyle-card secondproduct">
   </div>
-  <div class="fullscreen-card">
+  <div class="fullscreen-card entrance">
     <div class="text">I want to</div>
   </div>
   
   <div class="product-card secondproduct">
-    <div class="bg-card"></div>
-    <div class="fullscreen-card">
+    <div class="bg-card secondproduct"></div>
+    <div class="fullscreen-card entrance">
       <div class="text">feel transformed.</div>
     </div>
-    <div class="fullscreen-card">
+    <div class="fullscreen-card entrance">
       <img src="/ProductModel.png" alt="">
       <p>Lush Tropicale</p>
     </div> 
@@ -109,16 +114,16 @@ onMount(() => {
   <!-- Product 3 -->
   <div class="lifestyle-card thirdproduct">
   </div>
-  <div class="fullscreen-card">
+  <div class="fullscreen-card entrance">
     <div class="text">I want to</div>
   </div>
   
   <div class="product-card thirdproduct">
     <div class="bg-card thirdproduct"></div>
-    <div class="fullscreen-card">
+    <div class="fullscreen-card entrance">
       <div class="text">feel transformed.</div>
     </div>
-    <div class="fullscreen-card">
+    <div class="fullscreen-card entrance">
       <img src="/ProductModel.png" alt="">
       <p>Lush Tropicale</p>
     </div> 
@@ -170,7 +175,7 @@ onMount(() => {
       align-items: center;
       background-image: url(/ProductBG.png);
       background-size: cover;
-
+      background-attachment: fixed;
   }
   p {
     font-size: 10px;
@@ -239,11 +244,11 @@ onMount(() => {
     top: 0;
     color: white;
   }
-  .product-card.secondproduct {
-    background-image: url(/ProductBG2.png);
-  }
   .lifestyle-card.secondproduct {
     background-image: url(/LifestyleBG2.png);
+  }
+  .bg-card.secondproduct {
+    background-image: url(/ProductBG2.png);
   }
   
   .bg-card.thirdproduct {

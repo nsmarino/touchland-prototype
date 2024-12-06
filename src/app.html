@@ -23,10 +23,10 @@
 		}
 
 		.entrance img {
-			transition: transform 0.4s, opacity 0.2s;
+			transition: transform 1s, opacity 0.2s;
 		}
 		.entrance:not(.animate) img {
-			transform: translateY(100%) scale(0.9) rotateY(400deg);
+			transform: translateY(20%) scale(0.9) rotateY(360deg);
 			opacity: 0;
 			backface-visibility: visible;
 		}
@@ -34,7 +34,9 @@
 			transform: translateY(0%) scale(1) rotateY(0deg);
 			opacity: 1;
 			backface-visibility: visible;
-
+		}
+		.unfixed {
+			background-attachment: unset !important;
 		}
 	</style>
 </html>
