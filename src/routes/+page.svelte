@@ -99,10 +99,11 @@ onMount(() => {
   <div class="fullscreen-card entrance lifestyle-text-card">
     <div class="text">I want to</div>
   </div>
-  
+  <div class="fullscreen-card"></div>
+
   <div class="product-card secondproduct">
     <div class="bg-card secondproduct"></div>
-    <div class="fullscreen-card entrance entrance product-text-card">
+    <div class="fullscreen-card entrance product-text-card">
       <div class="text">feel transformed.</div>
     </div>
     <div class="fullscreen-card entrance">
@@ -117,6 +118,8 @@ onMount(() => {
   <div class="fullscreen-card entrance lifestyle-text-card">
     <div class="text">I want to</div>
   </div>
+  <div class="fullscreen-card"></div>
+
   
   <div class="product-card thirdproduct">
     <div class="bg-card thirdproduct"></div>
@@ -243,11 +246,6 @@ onMount(() => {
   .product-card {
     width: 100vw;
     height: 400vh;
-    background-image: url(/ProductBG.png);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: top;
-    background-repeat: no-repeat;
     position: relative;
     z-index: 1;
     top: 0;

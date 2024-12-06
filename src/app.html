@@ -10,28 +10,28 @@
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 	<style>
-		.entrance .text {
+		.fullscreen-card.entrance .text {
 			transition: transform 0.3s, opacity 0.3s;
 		}
-		.entrance:not(.animate) .text {
+		.fullscreen-card.entrance:not(.animate) .text {
 			transform: translateY(100%) scale(0.9);
 			opacity: 0;
 		}
-		.entrance.animate .text {
+		.fullscreen-card.entrance.animate .text {
 			transform: translateY(0%) scale(1);
 			opacity: 1;
 		}
 
-		.entrance img {
+		.fullscreen-card.entrance img {
 			transition: transform 2s, opacity 0.2s;
 		}
-		.entrance:not(.animate) img {
+		.fullscreen-card.entrance:not(.animate) img {
 			transform: translateY(20%) scale(0.9) rotateY(180deg);
 			transition-delay: 0.2s;
 			opacity: 0;
 			backface-visibility: visible;
 		}
-		.entrance.animate img {
+		.fullscreen-card.entrance.animate img {
 			transform: translateY(0%) scale(1) rotateY(0deg);
 			opacity: 1;
 			backface-visibility: visible;
@@ -39,5 +39,6 @@
 		.unfixed {
 			background-attachment: unset !important;
 		}
+		
 	</style>
 </html>
