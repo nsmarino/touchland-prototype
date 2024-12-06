@@ -153,12 +153,13 @@ onMount(() => {
     right: 0;
     z-index: 3;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
     font-weight: bolder;
     color: black;
     background: white;
     display: flex;
     justify-content: space-between;
-    padding: 16px;
+    padding: 10px;
     border-bottom: 1px solid #B3B3B3;
   }
 
