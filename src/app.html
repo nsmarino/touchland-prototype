@@ -23,10 +23,11 @@
 		}
 
 		.entrance img {
-			transition: transform 1s, opacity 0.2s;
+			transition: transform 2s, opacity 0.2s;
 		}
 		.entrance:not(.animate) img {
-			transform: translateY(20%) scale(0.9) rotateY(360deg);
+			transform: translateY(20%) scale(0.9) rotateY(180deg);
+			transition-delay: 0.2s;
 			opacity: 0;
 			backface-visibility: visible;
 		}

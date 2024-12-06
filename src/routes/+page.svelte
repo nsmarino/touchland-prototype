@@ -5,15 +5,17 @@
 
 
 onMount(() => {
-
   const intersectionCallback = (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         let elem = entry.target;
-        console.log("GO")
+
         if (entry.intersectionRatio > 0) {
           window.scrollTo({
             top: 0,
+          });
+          document.querySelectorAll(".bg-card").forEach((bg) => {
+            bg.classList.remove("unfixed");
           });
         }
       }
@@ -35,12 +37,9 @@ onMount(() => {
         entry.target.classList.add("animate");
         if (entry.target.querySelector("img")) {
           entry.target.parentElement.querySelector(".bg-card").classList.add("unfixed")
-
         }
       } else {
-        if (!entry.target.querySelector("img")) {
           entry.target.classList.remove("animate");
-        } 
       }
     });
   }, {
@@ -78,13 +77,14 @@ onMount(() => {
   <!-- Product 1 -->
   <div class="lifestyle-card omit-from-repeat">
   </div>
-  <div class="fullscreen-card entrance">
+  <div class="fullscreen-card entrance lifestyle-text-card">
     <div class="text">I want to</div>
   </div>
+  <div class="fullscreen-card"></div>
   
   <div class="product-card">
     <div class="bg-card"></div>
-    <div class="fullscreen-card entrance">
+    <div class="fullscreen-card entrance product-text-card">
       <div class="text">feel transformed.</div>
     </div>
     <div class="fullscreen-card entrance">
@@ -96,13 +96,13 @@ onMount(() => {
   <!-- Product 2 -->
   <div class="lifestyle-card secondproduct">
   </div>
-  <div class="fullscreen-card entrance">
+  <div class="fullscreen-card entrance lifestyle-text-card">
     <div class="text">I want to</div>
   </div>
   
   <div class="product-card secondproduct">
     <div class="bg-card secondproduct"></div>
-    <div class="fullscreen-card entrance">
+    <div class="fullscreen-card entrance entrance product-text-card">
       <div class="text">feel transformed.</div>
     </div>
     <div class="fullscreen-card entrance">
@@ -114,13 +114,13 @@ onMount(() => {
   <!-- Product 3 -->
   <div class="lifestyle-card thirdproduct">
   </div>
-  <div class="fullscreen-card entrance">
+  <div class="fullscreen-card entrance lifestyle-text-card">
     <div class="text">I want to</div>
   </div>
   
   <div class="product-card thirdproduct">
     <div class="bg-card thirdproduct"></div>
-    <div class="fullscreen-card entrance">
+    <div class="fullscreen-card entrance product-text-card">
       <div class="text">feel transformed.</div>
     </div>
     <div class="fullscreen-card entrance">
@@ -187,6 +187,13 @@ onMount(() => {
     font-family: Arial, Helvetica, sans-serif;
 
   }
+
+  .product-text-card {
+    margin-top: -75vh;
+  }
+  .lifestyle-text-card {
+    margin-top: -50vh;
+  }
   .hero {
     height: 50vh;
     display: flex;
@@ -224,6 +231,7 @@ onMount(() => {
     align-items: center;
     background: transparent;
   }
+
   .halfscreen-card {
     width: 100vw;
     height: 50vh;
@@ -233,7 +241,7 @@ onMount(() => {
   }
   .product-card {
     width: 100vw;
-    height: 300vh;
+    height: 400vh;
     background-image: url(/ProductBG.png);
     background-size: cover;
     background-attachment: fixed;
