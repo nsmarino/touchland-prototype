@@ -178,7 +178,6 @@ onMount(() => {
       justify-content: center;
       align-items: center;
       background-image: url('/ProductBG.png');
-      background-size: cover;
       background-attachment: fixed;
   }
   p {
@@ -250,18 +249,15 @@ onMount(() => {
     z-index: 1;
     top: 0;
     color: white;
-    background-image: url('/ProductBG.png');
-    background-size: cover;
-    background-attachment: fixed;
   }
   .lifestyle-card.secondproduct {
     background-image: url(/LifestyleBG2.png);
   }
-  .bg-card.secondproduct, .product-card.secondproduct{
+  .bg-card.secondproduct{
     background-image: url('/ProductBG2.png');
   }
   
-  .bg-card.thirdproduct, .product-card.thirdproduct {
+  .bg-card.thirdproduct {
     background-image: url('/ProductBG3.png');
   }
   .lifestyle-card.thirdproduct {

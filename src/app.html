@@ -10,14 +10,14 @@
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 	<style>
-		.fullscreen-card.entrance .text {
+		.fullscreen-card.entrance .text, .fullscreen-card.entrance .caption {
 			transition: transform 0.3s, opacity 0.3s;
 		}
-		.fullscreen-card.entrance:not(.animate) .text {
+		.fullscreen-card.entrance:not(.animate) .text, .fullscreen-card.entrance:not(.animate) .caption {
 			transform: translateY(100%) scale(0.9);
 			opacity: 0;
 		}
-		.fullscreen-card.entrance.animate .text {
+		.fullscreen-card.entrance.animate .text, .fullscreen-card.entrance.animate .caption {
 			transform: translateY(0%) scale(1);
 			opacity: 1;
 		}
