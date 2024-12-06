@@ -9,4 +9,32 @@
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
+	<style>
+		.entrance .text {
+			transition: transform 0.3s, opacity 0.3s;
+		}
+		.entrance:not(.animate) .text {
+			transform: translateY(100%) scale(0.9);
+			opacity: 0;
+		}
+		.entrance.animate .text {
+			transform: translateY(0%) scale(1);
+			opacity: 1;
+		}
+
+		.entrance img {
+			transition: transform 0.4s, opacity 0.2s;
+		}
+		.entrance:not(.animate) img {
+			transform: translateY(100%) scale(0.9) rotateY(400deg);
+			opacity: 0;
+			backface-visibility: visible;
+		}
+		.entrance.animate img {
+			transform: translateY(0%) scale(1) rotateY(0deg);
+			opacity: 1;
+			backface-visibility: visible;
+
+		}
+	</style>
 </html>

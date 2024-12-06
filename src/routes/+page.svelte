@@ -1,69 +1,177 @@
 <script>
   import App from '$lib/components/App.svelte'
+    import { onMount } from 'svelte';
+
+
+
+onMount(() => {
+
+  const intersectionCallback = (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        let elem = entry.target;
+        console.log("GO")
+        if (entry.intersectionRatio > 0) {
+          window.scrollTo({
+            top: 0,
+          });
+        }
+      }
+    });
+  };
+
+  const options = {
+    root: document.querySelector("#scrollArea"),
+    rootMargin: "0%",
+    threshold: 0.5,
+  };
+
+  const observer = new IntersectionObserver(intersectionCallback, options);
+  const target = document.querySelector("#target");
+
+  observer.observe(target);
+
+  const entranceManager = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate");
+      } else {
+        if (!entry.target.querySelector("img")) entry.target.classList.remove("animate");
+      }
+    });
+  }, {
+    threshold: 0.75
+  });
+  const entranceUsers = document.querySelectorAll(".entrance");
+  entranceUsers.forEach((user) => {
+    entranceManager.observe(user);
+  });
+
+  // end onMount
+});
+
+
+
 </script>
 
   <!-- <App /> -->
   
-  <header>touchland</header>
+  <header class="omit-from-repeat">
+    <div>touchland</div>
+    <div style="display: flex; gap: 16px;">
+      <div>00:31:24:12</div>
+      <div>Join the Waitlist</div>
+    </div>
+  </header>
+  <div class="hero omit-from-repeat">
+    <p>New</p>
+    <h1>Meet Body Mist.</h1>
+    <p>Mood-boosting formulas for soothed skin and uplifted senses.</p>
+    <button>Join the waitlist</button>
+  </div>
+
+  <!-- Product 1 -->
+  <div class="lifestyle-card omit-from-repeat">
+  </div>
+  <div class="fullscreen-card entrance">
+    <div class="text">I want to</div>
+  </div>
+  
+  <div class="product-card">
+    <div class="bg-card"></div>
+    <div class="fullscreen-card entrance">
+      <div class="text">feel transformed.</div>
+    </div>
+    <div class="fullscreen-card entrance">
+      <img src="/ProductModel.png" alt="">
+      <p>Lush Tropicale</p>
+    </div> 
+  </div>
+
+  <!-- Product 2 -->
+  <div class="lifestyle-card secondproduct">
+  </div>
+  <div class="fullscreen-card">
+    <div class="text">I want to</div>
+  </div>
+  
+  <div class="product-card secondproduct">
+    <div class="bg-card"></div>
+    <div class="fullscreen-card">
+      <div class="text">feel transformed.</div>
+    </div>
+    <div class="fullscreen-card">
+      <img src="/ProductModel.png" alt="">
+      <p>Lush Tropicale</p>
+    </div> 
+  </div>
+
+  <!-- Product 3 -->
+  <div class="lifestyle-card thirdproduct">
+  </div>
+  <div class="fullscreen-card">
+    <div class="text">I want to</div>
+  </div>
+  
+  <div class="product-card thirdproduct">
+    <div class="bg-card thirdproduct"></div>
+    <div class="fullscreen-card">
+      <div class="text">feel transformed.</div>
+    </div>
+    <div class="fullscreen-card">
+      <img src="/ProductModel.png" alt="">
+      <p>Lush Tropicale</p>
+    </div> 
+  </div>
+
   <div class="hero">
     <p>New</p>
     <h1>Meet Body Mist.</h1>
     <p>Mood-boosting formulas for soothed skin and uplifted senses.</p>
     <button>Join the waitlist</button>
   </div>
-  <div class="lifestyle-card">
-    <!-- <div class="text">I want to feel</div> -->
+  <div class="lifestyle-card" id="target">
   </div>
-  <div class="text-card">
-    <div class="text">I want to</div>
-  </div>
-  <div class="product-card">
-    <!-- <div class="text">HAPPINESS</div>
-    <div class="product-image">
-      <img src="ProductModel.png" alt="">
-    </div> -->
-    <div class="text-card"></div>
-    <div class="text-card">
-      <div class="text">feel transformed.</div>
-    </div>
-    <div class="text-card">
-      <img src="ProductModel.png" alt="">
-      <p>Lush Tropicale</p>
-    </div> 
-  </div>
-  <div class="lifestyle-card" style="background-image: url(LifestyleBG2.png)">
-    <!-- <div class="text">I want to feel</div> -->
-  </div>
-  <div class="text-card">
-    <div class="text">I want to</div>
-  </div>
-  <div class="product-card secondproduct">
-    <div class="text-card"></div>
-    <div class="text-card">
-      <div class="text">express not repress.</div>
-    </div>
-    <div class="text-card">
-      <img src="ProductModel2.png" alt="">
-      <p>Cashmere Woods</p>
 
-    </div> 
-  </div>
+  
 
 <style>
   :global(body) {
     margin: 0;
     padding: 0;
   }
+
   header {
     position: fixed;
-    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 2px;
-    background-color: rgba(255, 255, 255, 0.5);
+    font-weight: bolder;
     color: black;
-    width: 100vw;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid #B3B3B3;
   }
-  
+
+  .bg-card {
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      position: sticky;
+      top: 0;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url(/ProductBG.png);
+      background-size: cover;
+
+  }
   p {
     font-size: 10px;
     text-transform: uppercase;
@@ -75,8 +183,14 @@
 
   }
   .hero {
-    top: 0;
-    padding: 80px 0 20px;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px 40px;
+    position: relative;
+    z-index: 2;
+    background: white;
   }
   .lifestyle-card {
     width: 100vw;
@@ -88,15 +202,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(LifestyleBG.png);
+    background: url(/LifestyleBG.png);
     background-size: cover;
 
   }
-  .text-card {
+  .fullscreen-card {
     width: 100vw;
     height: 100vh;
     z-index: 1;
-    position: relative;
+    position: sticky;
+    top: 0;
     color: white;
     display: flex;
     flex-direction: column;
@@ -104,22 +219,17 @@
     align-items: center;
     background: transparent;
   }
-  .product-image {
-    width: 40%;
-    background: green;
-    height: 70%;
-    border-radius: 20px;
-  }
-  .product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 20px;
+  .halfscreen-card {
+    width: 100vw;
+    height: 50vh;
+    z-index: 1;
+    position: relative;
+    background: transparent;
   }
   .product-card {
     width: 100vw;
     height: 300vh;
-    background: url(ProductBG.png);
+    background-image: url(/ProductBG.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: top;
@@ -130,12 +240,17 @@
     color: white;
   }
   .product-card.secondproduct {
-    background-image: url(ProductBG2.png);
+    background-image: url(/ProductBG2.png);
+  }
+  .lifestyle-card.secondproduct {
+    background-image: url(/LifestyleBG2.png);
+  }
+  
+  .bg-card.thirdproduct {
+    background-image: url(/ProductBG3.png);
+  }
+  .lifestyle-card.thirdproduct {
+    background-image: url(/LifestyleBG3.png);
   }
 
-  /* div {
-    width: 100vw;
-    height: 100vh;
-    background: white;
-  } */
 </style>
