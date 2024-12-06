@@ -104,7 +104,7 @@ onMount(() => {
   <div class="product-card secondproduct">
     <div class="bg-card secondproduct"></div>
     <div class="fullscreen-card entrance product-text-card">
-      <div class="text">feel transformed.</div>
+      <div class="text">Lorem ipsum dolar.</div>
     </div>
     <div class="fullscreen-card entrance">
       <img src="/ProductModel.png" alt="">
@@ -122,9 +122,9 @@ onMount(() => {
 
   
   <div class="product-card thirdproduct">
-    <div class="bg-card thirdproduct"></div>
+    <div class="bg-card thirdproduct">  </div>
     <div class="fullscreen-card entrance product-text-card">
-      <div class="text">feel transformed.</div>
+      <div class="text">Lorem ipsum dolar.</div>
     </div>
     <div class="fullscreen-card entrance">
       <img src="/ProductModel.png" alt="">
@@ -169,7 +169,7 @@ onMount(() => {
   .bg-card {
       width: 100vw;
       height: 100vh;
-      z-index: 1;
+      z-index: -1;
       position: sticky;
       top: 0;
       color: white;
@@ -177,7 +177,7 @@ onMount(() => {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-image: url(/ProductBG.png);
+      background-image: url('/ProductBG.png');
       background-size: cover;
       background-attachment: fixed;
   }
@@ -187,7 +187,7 @@ onMount(() => {
     font-family: Arial, Helvetica, sans-serif;
   }
   .text {
-    font-size: 32px;
+    font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
 
   }
@@ -255,11 +255,11 @@ onMount(() => {
     background-image: url(/LifestyleBG2.png);
   }
   .bg-card.secondproduct {
-    background-image: url(/ProductBG2.png);
+    background-image: url('/ProductBG2.png');
   }
   
   .bg-card.thirdproduct {
-    background-image: url(/ProductBG3.png);
+    background-image: url('/ProductBG3.png');
   }
   .lifestyle-card.thirdproduct {
     background-image: url(/LifestyleBG3.png);
